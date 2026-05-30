@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#060d1a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="بيرق العرب" />
+    <meta name="description" content="منصة متكاملة لإدارة التوظيف بالخارج" />
+    <title>بيرق العرب — منصة التوظيف بالخارج</title>
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // تسجيل Service Worker للـ PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => {
+              reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    if (confirm('يوجد تحديث جديد! هل تريد إعادة التحميل؟')) {
+                      newWorker.postMessage('SKIP_WAITING')
+                      window.location.reload()
+                    }
+                  }
+                })
+              })
+            })
+            .catch(err => console.log('SW Error:', err))
+        })
+      }
+    </script>
+  </body>
+</html>

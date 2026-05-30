@@ -1,0 +1,23 @@
+{
+  "name": "بيرق العرب — منصة التوظيف بالخارج",
+  "short_name": "بيرق العرب",
+  "description": "منصة متكاملة لإدارة التوظيف بالخارج",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060d1a",
+  "theme_color": "#0e90e0",
+  "orientation": "any",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "/logo.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any maskable" },
+    { "src": "/logo.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    { "name": "قاعدة البيانات", "url": "/?tab=database", "description": "فتح قاعدة البيانات" },
+    { "name": "متابعة الملفات", "url": "/?tab=tracking", "description": "متابعة ملفات التوظيف" },
+    { "name": "عروض الخليج",    "url": "/?tab=gulf",     "description": "عروض الشغل في الخليج" }
+  ]
+}
